@@ -1,8 +1,18 @@
 * {
   margin: auto;
   padding: auto;
+  list-style: none;
 }
 
 body {
-  background-color: black;
+  background-color: #b0cf00;
+  color: #fff;
+}
+
+.main {
+  width: 500px;
+  background: #000;
+  position: relative;
+  height: 300px;
+  margin-top: 100px;
 }
