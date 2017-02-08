@@ -10,10 +10,24 @@ body {
   font-size: 2em;
 }
 
+button {
+  background-color: #003828;
+  color: #FFFAFF;
+}
+
+input[type="search"] {
+  width: 230px !important;
+}
+
 .main {
   width: 600px;
   background: #000;
   position: relative;
   min-height: 400px;
   margin-top: 100px;
+}
+
+.footer {
+  padding-top: 40px;
+  text-align: center;
 }
