@@ -1,5 +1,7 @@
 $(document).ready(function () {
   console.log("I'm here");
+  getCurrentLocation();
+
 
   var searchText = $('#search-text');
   var q = searchText.val();
@@ -12,6 +14,10 @@ $(document).ready(function () {
   function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
+
+  $('.form-control').on('load', function() {
+    $('.form-control').val(getCurrentLocation());
+  })
 
   $('.form-control').on('focus', function () {
     $('.form-control').val('');
@@ -28,18 +34,30 @@ $(document).ready(function () {
     }
     console.log(url);
     getCurrentWeather();
-    // if (isNumeric(data.q)) {
-    //   url = "http://api.openweathermap.org/data/2.5/weather" + data.zip;
-    // }
-
   });
+
+
+  function getCurrentLocation() {
+    $.getJSON('http://ipinfo.io',
+      function(data) {
+        data.city;
+        // var currentLocation = data.city;
+    });
+  }
 
   function getCurrentWeather() {
     $.getJSON(
       url,
       function (data) {
-        console.log(data);
-        weatherDisplay.html(data.city.name);
+        console.log('got data: ', data);
+
+        currentLocation = data.city.name;
+        var currentWeather = data.list[0].weather[0].description;
+        var currentTemp = data.list[0].main.temp;
+        var highTemp = data.list[0].main.temp_max;
+        var minTemp = data.list[0].main.temp_min;
+        $('#currentLocation').html(currentLocation);
     });
-  }
+  };
+
 });

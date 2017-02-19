@@ -1,3 +1,4 @@
+
 * {
   margin: auto;
   padding: auto;
@@ -5,7 +6,8 @@
 }
 
 body {
-  background-color: #b0cf00;
+  background: url('http://bit.ly/1V2DIum');
+  /*background-color: #b0cf00;*/
   color: #fff;
   font-size: 2em;
 }
@@ -17,6 +19,20 @@ button {
 
 input[type="search"] {
   width: 230px !important;
+}
+
+#header {
+  background: #2980b9;
+  color: white;
+  padding: 0 16px;
+  display: inline-block;
+  width: 100%;
+  margin-top: 0;
+  box-shadow: 0px 2px 5px #555;
+  .left, .navbar, .right {
+    display: inline-block;
+    //border: 2px solid green;
+  }
 }
 
 .main {
