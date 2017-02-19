@@ -5,16 +5,12 @@ $(document).ready(function () {
   var q = searchText.val();
   var weatherDisplay = $('#weatherResults');
   var apiKey = '77ffd60dd230258b705c8d658f5e0e70'
-  var url = "http://api.openweathermap.org/data/2.5/forecast";
+  // var url = "http://api.openweathermap.org/data/2.5/forecast";
   var units = 'imperial';
 
   // will check if input is numeric
   function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
-  }
-
-  if (isNumeric(q)) {
-    url + '?zip=' + q + '&units=' + units + '&appid=' + apiKey
   }
 
   $('.form-control').on('focus', function () {
@@ -25,7 +21,12 @@ $(document).ready(function () {
     console.log('form submitted');
 
     q = searchText.val();
-    console.log(q);
+    if (isNumeric(q)) {
+      url = "http://api.openweathermap.org/data/2.5/forecast?zip=" + q + '&units=' + units + '&appid=' + apiKey;
+    } else {
+      url = "http://api.openweathermap.org/data/2.5/forecast?q=" + q + '&units=' + units + '&appid=' + apiKey;
+    }
+    console.log(url);
     getCurrentWeather();
     // if (isNumeric(data.q)) {
     //   url = "http://api.openweathermap.org/data/2.5/weather" + data.zip;
