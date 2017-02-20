@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  console.log("I'm here");
+  // console.log("I'm here");
   getCurrentLocation();
 
 
@@ -15,9 +15,6 @@ $(document).ready(function () {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
-  $('.form-control').on('load', function() {
-    $('.form-control').val(getCurrentLocation());
-  })
 
   $('.form-control').on('focus', function () {
     $('.form-control').val('');
@@ -40,8 +37,11 @@ $(document).ready(function () {
   function getCurrentLocation() {
     $.getJSON('http://ipinfo.io',
       function(data) {
-        data.city;
-        // var currentLocation = data.city;
+        var q = data.city;
+        // console.log(q);
+        $('.form-control').val(q).change();
+        url = "http://api.openweathermap.org/data/2.5/forecast?q=" + q + '&units=' + units + '&appid=' + apiKey;
+        getCurrentWeather();
     });
   }
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
     $.getJSON(
       url,
       function (data) {
-        console.log('got data: ', data);
+        // console.log('got data: ', data);
 
         currentLocation = data.city.name;
         var currentWeather = data.list[0].weather[0].description;

@@ -7,7 +7,6 @@
 
 body {
   background: url('http://bit.ly/1V2DIum');
-  /*background-color: #b0cf00;*/
   color: #fff;
   font-size: 2em;
 }
@@ -29,15 +28,27 @@ input[type="search"] {
   width: 100%;
   margin-top: 0;
   box-shadow: 0px 2px 5px #555;
-  .left, .navbar, .right {
+  .left, .right {
     display: inline-block;
     //border: 2px solid green;
+  }
+  .left, .right {
+    width: 20%;
+  }
+  .left {
+    float: left;
+  }
+  .right {
+    text-align: right;
+    float: right;
+    line-height: 80px;
+    vertical-align: bottom;
   }
 }
 
 .main {
   width: 600px;
-  background: #000;
+  /*background: #000;*/
   position: relative;
   min-height: 400px;
   margin-top: 100px;
