@@ -37,9 +37,11 @@ $(document).ready(function () {
   function getCurrentLocation() {
     $.getJSON('http://ipinfo.io',
       function(data) {
+        console.log('this is the data from current location: ', data)
         var q = data.city;
+        var state = data.region.
         // console.log(q);
-        $('.form-control').val(q).change();
+        // $('.form-control').val(q).change();
         url = "http://api.openweathermap.org/data/2.5/forecast?q=" + q + '&units=' + units + '&appid=' + apiKey;
         getCurrentWeather();
     });
@@ -49,9 +51,9 @@ $(document).ready(function () {
     $.getJSON(
       url,
       function (data) {
-        // console.log('got data: ', data);
+        console.log('got data: ', data);
 
-        currentLocation = data.city.name;
+        var currentLocation = data.city.name;
         var currentWeather = data.list[0].weather[0].description;
         var currentTemp = data.list[0].main.temp;
         var highTemp = data.list[0].main.temp_max;
