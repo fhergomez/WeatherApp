@@ -39,8 +39,8 @@ $(document).ready(function () {
       function(data) {
         console.log('this is the data from current location: ', data)
         var q = data.city;
-        var state = data.region.
-        // console.log(q);
+        var state = data.region
+        console.log(state);
         // $('.form-control').val(q).change();
         url = "http://api.openweathermap.org/data/2.5/forecast?q=" + q + '&units=' + units + '&appid=' + apiKey;
         getCurrentWeather();
