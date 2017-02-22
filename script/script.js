@@ -9,6 +9,8 @@ $(document).ready(function () {
   var apiKey = '77ffd60dd230258b705c8d658f5e0e70'
   // var url = "http://api.openweathermap.org/data/2.5/forecast";
   var units = 'imperial';
+  var celsius = false;
+  var weatherData;
 
   // will check if input is numeric
   function isNumeric(n) {
@@ -37,6 +39,7 @@ $(document).ready(function () {
   function getCurrentLocation() {
     $.getJSON('http://ipinfo.io',
       function(data) {
+        weatherData = data;
         console.log('this is the data from current location: ', data)
         var q = data.city;
         var state = data.region
@@ -58,7 +61,15 @@ $(document).ready(function () {
         var currentTemp = data.list[0].main.temp;
         var highTemp = data.list[0].main.temp_max;
         var minTemp = data.list[0].main.temp_min;
+        var icon = data.list[0].weather[0].icon;
+
+        var imgIcon = 'http://openweathermap.org/img/w/' + icon + '.png'
+
+
         $('#currentLocation').html(currentLocation);
+        $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
+        $('#currentTemp').html(currentTemp);
+
     });
   };
 

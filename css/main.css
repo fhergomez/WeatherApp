@@ -25,7 +25,7 @@ input[type="search"] {
   margin: 0;
 }
 
-#header {
+#header, #currentConditions, #footer {
   background: rgba(41,128,185,0.8);
   color: white;
   padding: 0 16px;
@@ -44,6 +44,22 @@ input[type="search"] {
     display: inline-block;
     width: 50%;
     /*border: 2px solid green;*/
+}
+
+#currentConditions .right, #currentConditions .left {
+  font-size: 4em;
+  padding: 20px 75px;
+}
+
+#header h2 {
+  text-align: center;
+}
+
+.convertButton {
+  display: inline-block;
+  width: 20%;
+  line-height: 20px !important;
+  text-align: center !important;
 }
 
 .left {
@@ -70,8 +86,8 @@ input[type="search"] {
  width: 100%;
  padding: 0;
 }
-
+/*
 .footer {
   padding-top: 40px;
   text-align: center;
-}
+}*/
