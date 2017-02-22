@@ -25,6 +25,10 @@ input[type="search"] {
   margin: 0;
 }
 
+#header {
+  margin-bottom: 5px;
+}
+
 #header, #currentConditions, #footer {
   background: rgba(41,128,185,0.8);
   color: white;
@@ -48,7 +52,7 @@ input[type="search"] {
 
 #currentConditions .right, #currentConditions .left {
   font-size: 4em;
-  padding: 20px 75px;
+  padding: 20px 60px;
 }
 
 #header h2 {

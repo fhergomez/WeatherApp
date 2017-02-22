@@ -10,11 +10,35 @@ $(document).ready(function () {
   // var url = "http://api.openweathermap.org/data/2.5/forecast";
   var units = 'imperial';
   var celsius = false;
-  var weatherData;
+  var data;
 
   // will check if input is numeric
   function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+  function renderData (data, celsius) {
+    var currentLocation = data.city.name;
+    var currentWeather = data.list[0].weather[0].description;
+    var currentTemp = displayTemp(data.list[0].main.temp, celsius);
+    var highTemp = data.list[0].main.temp_max;
+    var minTemp = data.list[0].main.temp_min;
+    var icon = data.list[0].weather[0].icon;
+
+    var imgIcon = 'http://openweathermap.org/img/w/' + icon + '.png'
+
+
+    $('#currentLocation').html(currentLocation);
+    $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
+    $('#currentTemp').html(currentTemp + '&deg;');
+  }
+
+  function displayTemp(fTemp, cTemp) {
+    if (cTemp) {
+      return Math.round((fTemp - 32) * (5/9)) + " C";
+    } else {
+      return Math.round(fTemp) + " F"
+    }
   }
 
 
@@ -39,7 +63,6 @@ $(document).ready(function () {
   function getCurrentLocation() {
     $.getJSON('http://ipinfo.io',
       function(data) {
-        weatherData = data;
         console.log('this is the data from current location: ', data)
         var q = data.city;
         var state = data.region
@@ -53,23 +76,15 @@ $(document).ready(function () {
   function getCurrentWeather() {
     $.getJSON(
       url,
-      function (data) {
+      function (apidata) {
+        data = apidata;
         console.log('got data: ', data);
+        renderData(data, celsius);
 
-        var currentLocation = data.city.name;
-        var currentWeather = data.list[0].weather[0].description;
-        var currentTemp = data.list[0].main.temp;
-        var highTemp = data.list[0].main.temp_max;
-        var minTemp = data.list[0].main.temp_min;
-        var icon = data.list[0].weather[0].icon;
-
-        var imgIcon = 'http://openweathermap.org/img/w/' + icon + '.png'
-
-
-        $('#currentLocation').html(currentLocation);
-        $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
-        $('#currentTemp').html(currentTemp);
-
+        $('.convertButton').on('click', function (){
+          celsius = !celsius;
+          renderData(data, celsius);
+        })
     });
   };
 
