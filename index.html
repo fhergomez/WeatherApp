@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <!-- Latest compiled and minified CSS & JS -->
@@ -11,8 +12,11 @@
   <script type="text/javascript" src="script/script.js"></script>
   <title>Weather App</title>
 </head>
+
 <body>
   <div class="container main">
+
+    <!-- Nav Bar / Search Bar -->
     <div class="row navigation-bar search-bar">
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -41,6 +45,7 @@
         </div>
       </nav>
     </div>
+    <!-- end Nav Bar / Search Bar -->
 
     <!-- weather container -->
     <div class="col-sm-6 col-md-6 col-lg-6 col-offset-3" id="weatherResults">
@@ -52,15 +57,29 @@
         <div class="left" id="imgIcon"></div>
         <div class="right" id="currentTemp"></div>
       </div>
+      <div id="daysForecast">
+        <div class="row seven-cols">
+          <div class="col-md-1 forecast">Day 1</div>
+          <div class="col-md-1 forecast">Day 2</div>
+          <div class="col-md-1 forecast">Day 3</div>
+          <div class="col-md-1 forecast">Day 4</div>
+          <div class="col-md-1 forecast">Day 5</div>
+          <div class="col-md-1 forecast">Day 6</div>
+          <div class="col-md-1 forecast">Day 7</div>
+        </div>
       </div>
+
+      <!-- Footer container -->
       <div id="footer">
         <div class="left"><h1 id="currentLocation">Choose your location</h1></div>
         <div class="right">created with <i class="fa fa-heart"></i> by Fernando</div>
       </div>
+      <!-- end Footer container -->
     </div>
+    <!-- end Weather Results -->
 
   </div>
-
+  <!-- end main container -->
 
 </body>
 </html>
