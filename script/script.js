@@ -36,9 +36,8 @@ $(document).ready(function () {
   function displayTemp(fTemp, cTemp) {
     if (cTemp) {
       return Math.round((fTemp - 32) * (5/9)) + " C";
-    } else {
-      return Math.round(fTemp) + " F"
     }
+    return Math.round(fTemp) + " F";
   }
 
 
@@ -48,14 +47,12 @@ $(document).ready(function () {
   $('#search-form').on('submit', function(e) {
     e.preventDefault();
     console.log('form submitted');
-
     q = searchText.val();
     if (isNumeric(q)) {
       url = "http://api.openweathermap.org/data/2.5/forecast?zip=" + q + '&units=' + units + '&appid=' + apiKey;
     } else {
       url = "http://api.openweathermap.org/data/2.5/forecast?q=" + q + '&units=' + units + '&appid=' + apiKey;
     }
-    console.log(url);
     getCurrentWeather();
   });
 
@@ -67,7 +64,6 @@ $(document).ready(function () {
         var q = data.city;
         var state = data.region
         console.log(state);
-        // $('.form-control').val(q).change();
         url = "http://api.openweathermap.org/data/2.5/forecast?q=" + q + '&units=' + units + '&appid=' + apiKey;
         getCurrentWeather();
     });
@@ -81,10 +77,10 @@ $(document).ready(function () {
         console.log('got data: ', weatherData);
         renderData(apiData, celsius);
 
-        $('.convertButton').click(function (e){
+        $('.convertButton').unbind().click(function(e){
           e.preventDefault();
           celsius = !celsius;
-          console.log(celsius);
+          // console.log(celsius);
           renderData(weatherData, celsius);
         })
     });
