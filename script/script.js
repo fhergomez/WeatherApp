@@ -31,6 +31,10 @@ $(document).ready(function () {
     $('#currentLocation').html(currentLocation);
     $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
     $('#currentTemp').html(currentTemp + '&deg;');
+    for (var i = 0;i < 7; i++) {
+      var forecast = weatherData.list[i + 3];
+      $('forecast').html(forecast);
+    }
   }
 
   function displayTemp(fTemp, cTemp) {
