@@ -32,8 +32,10 @@ $(document).ready(function () {
     $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
     $('#currentTemp').html(currentTemp + '&deg;');
     for (var i = 0;i < 7; i++) {
-      var forecast = weatherData.list[i + 3];
-      $('forecast').html(forecast);
+      console.log(i);
+      var forecast = weatherData.list[i];
+      console.log(forecast);
+      $('.forecast').html(forecast);
     }
   }
 
@@ -64,7 +66,7 @@ $(document).ready(function () {
   function getCurrentLocation() {
     $.getJSON('http://ipinfo.io',
       function(data) {
-        console.log('this is the data from current location: ', data)
+        // console.log('this is the data from current location: ', data)
         var q = data.city;
         var state = data.region
         console.log(state);
@@ -78,7 +80,7 @@ $(document).ready(function () {
       url,
       function (apiData) {
         weatherData = apiData;
-        console.log('got data: ', weatherData);
+        // console.log('got data: ', weatherData);
         renderData(apiData, celsius);
 
         $('.convertButton').unbind().click(function(e){
