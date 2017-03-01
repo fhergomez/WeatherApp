@@ -40,7 +40,7 @@ input[type="search"] {
   font-size: 14px;
 }
 
-.forecast {
+.forecast1, .forecast2, .forecast3, .forecast4, .forecast5, .forecast6, .forecast0 {
   background: rgba(41,128,185,0.8);
   color: white;
   padding: 0 16px;

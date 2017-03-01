@@ -18,25 +18,31 @@ $(document).ready(function () {
   }
 
   function renderData (weatherData, celsius) {
+    console.log(weatherData);
     var currentLocation = weatherData.city.name;
     var currentWeather = weatherData.list[0].weather[0].description;
-    var currentTemp = displayTemp(weatherData.list[0].main.temp, celsius);
-    var highTemp = weatherData.list[0].main.temp_max;
-    var minTemp = weatherData.list[0].main.temp_min;
+    var currentTemp = displayTemp(weatherData.list[0].temp.day, celsius);
+    var highTemp = weatherData.list[0].temp.max;
+    var minTemp = weatherData.list[0].temp.min;
     var icon = weatherData.list[0].weather[0].icon;
 
-    var imgIcon = 'http://openweathermap.org/img/w/' + icon + '.png'
+    var imgIcon = 'http://openweathermap.org/img/w/' + icon + '.png';
 
 
     $('#currentLocation').html(currentLocation);
     $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
     $('#currentTemp').html(currentTemp + '&deg;');
     for (var i = 0;i < 7; i++) {
-      console.log(i);
-      var forecast = weatherData.list[i];
-      console.log(forecast);
-      $('.forecast').html(forecast);
+      var dailyTemp = displayTemp(weatherData.list[i].temp.day, celsius);
+      var dailyIcon = weatherData.list[i].weather[0].icon;
+
+      var dailyImgIcon = 'http://openweathermap.org/img/w/' + dailyIcon + '.png';
+
+      console.log(weatherData);
+      $('.dailyTemp' + i).html(dailyTemp + '&deg;');
+      $('#dailyImgIcon' + i).html('<img src=' + dailyImgIcon + ' width="40" height="40"> ');
     }
+
   }
 
   function displayTemp(fTemp, cTemp) {
@@ -55,9 +61,9 @@ $(document).ready(function () {
     console.log('form submitted');
     q = searchText.val();
     if (isNumeric(q)) {
-      url = "http://api.openweathermap.org/data/2.5/forecast?zip=" + q + '&units=' + units + '&appid=' + apiKey;
+      url = "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + q + '&units=' + units + '&appid=' + apiKey;
     } else {
-      url = "http://api.openweathermap.org/data/2.5/forecast?q=" + q + '&units=' + units + '&appid=' + apiKey;
+      url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + q + '&units=' + units + '&appid=' + apiKey;
     }
     getCurrentWeather();
   });
@@ -70,7 +76,7 @@ $(document).ready(function () {
         var q = data.city;
         var state = data.region
         console.log(state);
-        url = "http://api.openweathermap.org/data/2.5/forecast?q=" + q + '&units=' + units + '&appid=' + apiKey;
+        url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + q + '&units=' + units + '&appid=' + apiKey;
         getCurrentWeather();
     });
   }
