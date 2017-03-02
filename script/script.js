@@ -34,22 +34,31 @@ $(document).ready(function () {
     $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
     $('#currentTemp').html(currentTemp + '&deg;');
     for (var i = 0;i < 7; i++) {
-      function getDate(i) {
-        var d= new Date();
-        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var weekDay = days[d.getDay(i)];
-        return weekDay;
-      }
       var dailyTemp = displayTemp(weatherData.list[i].temp.day, celsius);
       var dailyIcon = weatherData.list[i].weather[0].icon;
+      var minTemp = weatherData.list[0].
+
+      // converting day of the week from Unix Timestamp
+      var timeStamp = weatherData.list[i].dt;
+        var date = new Date();
+        date.setTime(timeStamp*1000);
+        date.toUTCString();
+        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var weekDay = days[date.getDay()];
+        // console.log(weekDay);
+
 
       var dailyImgIcon = 'http://openweathermap.org/img/w/' + dailyIcon + '.png';
 
-
       console.log(weatherData);
-      $('.date' + i).html(getDate());
+
+      if (weekDay === "Wednesday" ) {
+        $('h4').css('margin-left','-10px');
+      }
+      $('.weekDay' + i).html(weekDay);
+      $('#dailyImgIcon' + i).html('<img src=' + dailyImgIcon + ' width="50" height="50"> ');
       $('.dailyTemp' + i).html(dailyTemp + '&deg;');
-      $('#dailyImgIcon' + i).html('<img src=' + dailyImgIcon + ' width="40" height="40"> ');
+      $('minTeimp' + i).html()
     }
 
   }

@@ -16,6 +16,10 @@ button {
   color: #FFFAFF;
 }
 
+p {
+  font-size: 20px;
+}
+
 input[type="search"] {
   width: 230px !important;
 }
@@ -73,6 +77,10 @@ input[type="search"] {
 
 #header h2 {
   text-align: center;
+}
+
+h4 {
+  font-size: 15px;
 }
 
 .convertButton {
