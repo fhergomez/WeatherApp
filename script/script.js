@@ -17,6 +17,7 @@ $(document).ready(function () {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
+
   function renderData (weatherData, celsius) {
     console.log(weatherData);
     var currentLocation = weatherData.city.name;
@@ -33,12 +34,20 @@ $(document).ready(function () {
     $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
     $('#currentTemp').html(currentTemp + '&deg;');
     for (var i = 0;i < 7; i++) {
+      function getDate(i) {
+        var d= new Date();
+        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var weekDay = days[d.getDay(i)];
+        return weekDay;
+      }
       var dailyTemp = displayTemp(weatherData.list[i].temp.day, celsius);
       var dailyIcon = weatherData.list[i].weather[0].icon;
 
       var dailyImgIcon = 'http://openweathermap.org/img/w/' + dailyIcon + '.png';
 
+
       console.log(weatherData);
+      $('.date' + i).html(getDate());
       $('.dailyTemp' + i).html(dailyTemp + '&deg;');
       $('#dailyImgIcon' + i).html('<img src=' + dailyImgIcon + ' width="40" height="40"> ');
     }
