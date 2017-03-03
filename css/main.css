@@ -17,7 +17,8 @@ button {
 }
 
 p {
-  font-size: 20px;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
 input[type="search"] {
@@ -34,7 +35,7 @@ input[type="search"] {
 }
 
 #header, #currentConditions, #footer {
-  background: rgba(41,128,185,0.8);
+  background: rgba(40,128,185,0.9);
   color: white;
   padding: 0 16px;
   display: inline-block;
@@ -44,8 +45,12 @@ input[type="search"] {
   font-size: 14px;
 }
 
+#fahrenheit {
+  color: orange;
+}
+
 .forecast1, .forecast2, .forecast3, .forecast4, .forecast5, .forecast6, .forecast0 {
-  background: rgba(41,128,185,0.8);
+  background: rgba(41,128,185,0.5);
   color: white;
   padding: 0 16px;
   display: inline-block;
@@ -54,6 +59,10 @@ input[type="search"] {
   font-size: 14px;
   min-height: 250px;
   text-align: center;
+}
+
+#description {
+  font-size: 10px !important;
 }
 
 .seven-cols {

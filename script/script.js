@@ -34,16 +34,18 @@ $(document).ready(function () {
     $('#imgIcon').html('<img src=' + imgIcon + ' width="100" height="100"> ')
     $('#currentTemp').html(currentTemp + '&deg;');
     for (var i = 0;i < 7; i++) {
-      var dailyTemp = displayTemp(weatherData.list[i].temp.day, celsius);
+      var dailyMax = displayTemp(weatherData.list[i].temp.max, celsius);
+      var dailyMin = displayTemp(weatherData.list[i].temp.min, celsius)
       var dailyIcon = weatherData.list[i].weather[0].icon;
-      var minTemp = weatherData.list[0].
+      var description = weatherData.list[i].weather[0].description;
+      // var minTemp = weatherData.list[0].
 
       // converting day of the week from Unix Timestamp
       var timeStamp = weatherData.list[i].dt;
         var date = new Date();
         date.setTime(timeStamp*1000);
         date.toUTCString();
-        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
         var weekDay = days[date.getDay()];
         // console.log(weekDay);
 
@@ -52,22 +54,20 @@ $(document).ready(function () {
 
       console.log(weatherData);
 
-      if (weekDay === "Wednesday" ) {
-        $('h4').css('margin-left','-10px');
-      }
       $('.weekDay' + i).html(weekDay);
       $('#dailyImgIcon' + i).html('<img src=' + dailyImgIcon + ' width="50" height="50"> ');
-      $('.dailyTemp' + i).html(dailyTemp + '&deg;');
-      $('minTeimp' + i).html()
+      $('#description' + i).html(description).css({'font-size':'12px',
+                                                    'min-height':'51px'});
+      $('.dailyTemp' + i).html(dailyMax + '&deg; |  ' + dailyMin + '&deg;');
     }
 
   }
 
   function displayTemp(fTemp, cTemp) {
     if (cTemp) {
-      return Math.round((fTemp - 32) * (5/9)) + " C";
+      return Math.round((fTemp - 32) * (5/9));
     }
-    return Math.round(fTemp) + " F";
+    return Math.round(fTemp);
   }
 
 
@@ -109,7 +109,13 @@ $(document).ready(function () {
 
         $('.convertButton').unbind().click(function(e){
           e.preventDefault();
-          celsius = !celsius;
+          if (celsius = !celsius) {
+            $('#celsius').css('color','orange');
+            $('#fahrenheit').css('color','white');
+          } else {
+            $('#celsius').css('color','white')
+            $('#fahrenheit').css('color','orange');
+          }
           // console.log(celsius);
           renderData(weatherData, celsius);
         })
