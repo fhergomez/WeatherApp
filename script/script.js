@@ -6,7 +6,7 @@ $(document).ready(function () {
   var searchText = $('#search-text');
   var q = searchText.val();
   var weatherDisplay = $('#weatherResults');
-  var apiKey = '77ffd60dd230258b705c8d658f5e0e70'
+  var apiKey = config.API_KEY;
   // var url = "http://api.openweathermap.org/data/2.5/forecast";
   var units = 'imperial';
   var celsius = false;
