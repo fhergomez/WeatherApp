@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url('./images/bg.png');
+  background-image: url('../images/bg.png');
   color: #fff;
   font-size: 2em;
 }
