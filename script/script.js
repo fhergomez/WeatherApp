@@ -19,7 +19,7 @@ $(document).ready(function () {
 
 
   function renderData (weatherData, celsius) {
-    console.log(weatherData);
+    // console.log(weatherData);
     var currentLocation = weatherData.city.name;
     var currentWeather = weatherData.list[0].weather[0].description;
     var currentTemp = displayTemp(weatherData.list[0].temp.day, celsius);
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
       var dailyImgIcon = 'http://openweathermap.org/img/w/' + dailyIcon + '.png';
 
-      console.log(weatherData);
+      // console.log(weatherData);
 
       $('.weekDay' + i).html(weekDay);
       $('#dailyImgIcon' + i).html('<img src=' + dailyImgIcon + ' width="50" height="50"> ');
@@ -60,6 +60,7 @@ $(document).ready(function () {
                                                     'min-height':'51px'});
       $('.dailyTemp' + i).html(dailyMax + '&deg; |  ' + dailyMin + '&deg;');
     }
+    console.log(weatherData);
 
   }
 
